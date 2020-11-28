@@ -1,0 +1,1 @@
+This is a web app made using Django and can be used to make a randomized meal plan for the week.
