@@ -8,6 +8,20 @@ class RecipesController < ApplicationController
     @ingredientList = @recipe.ingredient.split(', ', -1)
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+
+    if @recipe.save
+      redirect_to @recipe
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def random
     recipes = Recipe.all
     numRecipes = 5
@@ -19,4 +33,9 @@ class RecipesController < ApplicationController
     end
     @recipes = randomRecipes
   end
+
+  private
+    def recipe_params
+      params.require(:recipe).permit(:name, :ingredient)
+    end
 end
