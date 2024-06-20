@@ -36,6 +36,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   def random
     recipes = Recipe.all
     numRecipes = 5
