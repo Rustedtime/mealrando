@@ -1,4 +1,19 @@
-<h1>Menu</h1>
+<h1>Create a randomized meal plan</h1>
+<%= form_with url: "/recipes/random", method: :get do |form| %>
+    <%= form.collection_check_boxes :menu, @recipes, :id, :name do |b| %>
+      <%= b.check_box %>
+      <%= b.label %>
+      <br>
+    <% end %>
+    <%= form.label :meals, "How many meals do you want to plan for?" %>
+    <%= form.number_field :meals, in: 1..14, step: 1 %><br>
+    <%= form.check_box :repeat %>
+    <%= form.label :repeat, "Allow repeats" %><br>
+    <%= form.submit "Create random meal plan" %>
+<% end %>
+<br>
+<br>
+<h1>View details of each menu item</h1>
 <ul>
     <% @recipes.each do |recipe| %>
       <li>
@@ -6,3 +21,4 @@
       </li>
     <% end %>
 </ul>
+<h3><%= link_to "Add new menu item", "/recipes/new" %></h3>

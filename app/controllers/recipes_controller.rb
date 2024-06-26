@@ -44,13 +44,13 @@ class RecipesController < ApplicationController
   end
 
   def random
-    recipes = Recipe.all
-    numRecipes = 5
+    data = randomize_params
+    recipesList = params[:menu]
+    numRecipes = params[:meals]
     randomRecipes = Array.new()
-    for a in 1..numRecipes do
-      randomnumber = 1 + rand(recipes.length())
-      puts "#{randomnumber}"
-      randomRecipes.push(recipes[randomnumber])
+    for a in 1..numRecipes.to_i do
+      randomnumber = 1 + rand(recipesList.length() - 1)
+      randomRecipes.push(Recipe.find(recipesList[randomnumber]))
     end
     @recipes = randomRecipes
   end
@@ -58,5 +58,9 @@ class RecipesController < ApplicationController
   private
     def recipe_params
       params.require(:recipe).permit(:name, :ingredient)
+    end
+
+    def randomize_params
+      params.permit(:menu).permit(:meals).permit(:repeat)
     end
 end
