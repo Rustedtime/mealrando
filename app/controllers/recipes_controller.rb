@@ -51,8 +51,11 @@ class RecipesController < ApplicationController
       numRecipes = params[:meals]
       randomRecipes = Array.new()
       for a in 1..numRecipes.to_i do
-        randomnumber = 1 + rand(recipesList.length() - 1)
-        randomRecipes.push(Recipe.find(recipesList[randomnumber]))
+        randomNumber = 1 + rand(recipesList.length() - 1)
+        randomRecipes.push(Recipe.find(recipesList[randomNumber]))
+        if params[:repeat].to_i == 0
+          recipesList.delete_at(randomNumber)
+        end
       end
       @recipes = randomRecipes
     else
@@ -75,6 +78,9 @@ class RecipesController < ApplicationController
       end
       if params[:meals] == ""
         errors.push("You must plan for at least 1 meal")
+      end
+      if (params[:repeat].to_i == 0) and ((params[:menu].length - 1) < params[:meals].to_i)
+        errors.push("You need to add more meals to the pool for repeat to be disabled")
       end
       return errors
     end
