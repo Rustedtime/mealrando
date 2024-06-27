@@ -1,4 +1,11 @@
 <h1>Create a randomized meal plan</h1>
+<ul>
+    <% @errors.each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+</ul>
 <%= form_with url: "/recipes/random", method: :get do |form| %>
     <%= form.collection_check_boxes :menu, @recipes, :id, :name do |b| %>
       <%= b.check_box %>

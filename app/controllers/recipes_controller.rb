@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
+    @errors = Array.new()
   end
 
   def show
@@ -44,15 +45,21 @@ class RecipesController < ApplicationController
   end
 
   def random
-    data = randomize_params
-    recipesList = params[:menu]
-    numRecipes = params[:meals]
-    randomRecipes = Array.new()
-    for a in 1..numRecipes.to_i do
-      randomnumber = 1 + rand(recipesList.length() - 1)
-      randomRecipes.push(Recipe.find(recipesList[randomnumber]))
+    validation = randomize_params
+    if (validation.empty?)
+      recipesList = params[:menu]
+      numRecipes = params[:meals]
+      randomRecipes = Array.new()
+      for a in 1..numRecipes.to_i do
+        randomnumber = 1 + rand(recipesList.length() - 1)
+        randomRecipes.push(Recipe.find(recipesList[randomnumber]))
+      end
+      @recipes = randomRecipes
+    else
+      @recipes = Recipe.all
+      @errors = validation
+      render :index, status: :unprocessable_entity
     end
-    @recipes = randomRecipes
   end
 
   private
@@ -62,5 +69,13 @@ class RecipesController < ApplicationController
 
     def randomize_params
       params.permit(:menu).permit(:meals).permit(:repeat)
+      errors = Array.new()
+      if params[:menu].length <= 1
+        errors.push("Your menu must include at least 1 meal")
+      end
+      if params[:meals] == ""
+        errors.push("You must plan for at least 1 meal")
+      end
+      return errors
     end
 end
