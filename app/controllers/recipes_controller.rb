@@ -57,7 +57,13 @@ class RecipesController < ApplicationController
           recipesList.delete_at(randomNumber)
         end
       end
+      ingredientList = Set.new()
+      randomRecipes.each do |recipe|
+        recipeIngredients = recipe.ingredient.split(', ', -1)
+        ingredientList.merge(recipeIngredients)
+      end
       @recipes = randomRecipes
+      @ingredients = ingredientList
     else
       @recipes = Recipe.all
       @errors = validation
