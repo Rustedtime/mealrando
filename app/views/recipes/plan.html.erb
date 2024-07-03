@@ -1,0 +1,24 @@
+<h1>Create a randomized meal plan</h1>
+<ul>
+    <% @errors.each do |error| %>
+      <li class="form-error">
+        <%= error %>
+      </li>
+    <% end %>
+</ul>
+
+<div class="flex-container">
+    <%= form_with url: "/recipes/random", method: :get, id: "plan" do |form| %>
+        <h3>Select meals you would like in the randomization pool</h3>
+        <%= form.collection_check_boxes :menu, @recipes, :id, :name do |b| %>
+            <%= b.check_box %>
+            <%= b.label %>
+            <br>
+        <% end %>
+        <b><%= form.label :meals, "How many meals do you want to plan for?" %></b>
+        <%= form.number_field :meals, in: 1..14, step: 1 %><br>
+        <%= form.check_box :repeat %>
+        <%= form.label :repeat, "Allow repeats" %><br>
+        <%= form.submit "Create random meal plan" %>
+    <% end %>
+</div>

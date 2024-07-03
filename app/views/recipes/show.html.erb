@@ -8,9 +8,11 @@
 </ul>
 
 <ul>
-  <li><%= link_to "Edit", edit_recipe_path(@recipe) %></li>
-  <li><%= link_to "Destroy", recipe_path(@recipe), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
+  <b>
+    <li><%= link_to "Edit", edit_recipe_path(@recipe) %></li>
+    <li><%= link_to "Destroy", recipe_path(@recipe), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  </b>
 </ul>

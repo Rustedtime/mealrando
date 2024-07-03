@@ -9,8 +9,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <header id="top-header">
+    <h1 class="siteName">Mealrando</h1>
+  </header>
+  <nav class="flex-container" id="main-nav">
+    <div><%= link_to "Home", "/" %></div>
+    <div><%= link_to "Plan", "/recipes/plan" %></div>
+  </nav>
+  <div id="wrapper">
+    <body>
+      <%= yield %>
+    </body>
+  </div>
 </html>

@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
-    @errors = Array.new()
   end
 
   def show
@@ -44,6 +43,11 @@ class RecipesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def plan
+    @recipes = Recipe.all
+    @errors = Array.new()
+  end
+
   def random
     validation = randomize_params
     if (validation.empty?)
@@ -67,7 +71,7 @@ class RecipesController < ApplicationController
     else
       @recipes = Recipe.all
       @errors = validation
-      render :index, status: :unprocessable_entity
+      render :plan, status: :unprocessable_entity
     end
   end
 

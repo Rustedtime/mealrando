@@ -13,3 +13,233 @@
  *= require_tree .
  *= require_self
  */
+/******* Style ***********/
+html {
+    background-color: rgb(255, 184, 53);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  #top-header {
+    a:link {
+      text-decoration: none;
+      color: #261F1E;
+    }
+    
+    a:visited {
+      text-decoration: none;
+      color: #261F1E;
+    }
+    
+    a:hover {
+      text-decoration: none;
+      color: #261F1E;
+    }
+    
+    a:active {
+      text-decoration: none;
+      color: #261F1E;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    justify-content: space-between;
+  }
+  
+  #tools {
+    font-size: 14px;
+  }
+  
+  #wrapper {
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(7, 15, 15);
+    border-width: 5px;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .siteName {
+    color: #261F1E;
+    font-size: 40px;
+    text-decoration: none;
+    margin-left: 10%;
+  }
+  
+  .copyright {
+    color:gray;
+    font-size: 11px;
+    margin: 10px;
+  }
+  
+  nav {
+    background-color: #261F1E;
+    margin: 10px;
+    .flex-container > div {
+      background-color: #261F1E;
+      color: white;
+      font-size:15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    a {
+        font-size: 25px;
+    }
+    a:link {
+      text-decoration: none;
+      color: white;
+    }
+    
+    a:visited {
+      text-decoration: none;
+      color: white;
+    }
+    
+    a:hover {
+      text-decoration: none;
+      color: white;
+    }
+    
+    a:active {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  #main-nav {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  h1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+  
+  h2, h3, p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  
+  ul, li {
+    a:link {
+        text-decoration: none;
+        color: #261F1E;
+      }
+      
+      a:visited {
+        text-decoration: none;
+        color: #261F1E;
+      }
+      
+      a:hover {
+        text-decoration: none;
+        color: #261F1E;
+      }
+      
+      a:active {
+        text-decoration: none;
+        color: #261F1E;
+      }
+    padding: 10px;
+    margin-left: 20px;
+  }
+  
+  td {
+    text-align: center;
+    width: 200px;
+  }
+  
+  
+  .details {
+    text-align: left;
+    width: 70px;
+  }
+  
+  #error-title {
+    text-align: center;
+    font-size: 100px;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  #login {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0);
+    border-width: 5px;
+    background-color: rgb(133, 183, 183);
+    width: 300px;
+  
+    a:link {
+      color: #261F1E;
+    }
+    
+    a:visited {
+      color: #261F1E;
+    }
+    
+    a:hover {
+      color: #261F1E;
+    }
+    
+    a:active {
+      color: #261F1E;
+    }
+  }
+  
+  .login {
+    margin: 5%;
+    padding: 5px;
+    width: 90%;
+  }
+  
+  label, input, textarea {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  input[type=button], input[type=submit] {
+    margin-left: 25%;
+    width: 50%;
+    cursor: pointer;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0);
+    border-width: 5px;
+  }
+  
+  form {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0);
+    border-width: 5px;
+    width: 300px;
+    justify-self: center;
+  }
+
+  .form-error {
+    color: red;
+  }
+
+  #plan {
+    width: 50%;
+  }
