@@ -9,8 +9,21 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <header id="top-header">
-    <h1 class="siteName">Mealrando</h1>
+  <header>
+    <div class="flex-container" id="top-header">
+      <div>
+        <h1 class="siteName">Mealrando</h1>
+      </div>
+      <div>
+        <% if user_signed_in? %>
+          <%= link_to current_user.email, edit_user_registration_path %><br>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+        <% else %>
+          <%= link_to "Log in", new_user_session_path %><br>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
   </header>
   <nav class="flex-container" id="main-nav">
     <div><%= link_to "Home", "/" %></div>
