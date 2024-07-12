@@ -6,7 +6,9 @@
       </li>
     <% end %>
 </ul>
-
+<% if @recipes.empty? %>
+  <p>No recipes yet</p>
+<% end %>
 <div class="flex-container">
     <%= form_with url: "/recipes/random", method: :get, id: "plan" do |form| %>
         <h3>Select meals you would like in the randomization pool</h3>

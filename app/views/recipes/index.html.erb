@@ -1,5 +1,8 @@
 <h1>Welcome, <%= current_user.email %></h1>
 <h1>View details of each menu item</h1>
+<% if @recipes.empty? %>
+  <p>No recipes yet</p>
+<% end %>
 <ul>
     <% @recipes.each do |recipe| %>
       <li>

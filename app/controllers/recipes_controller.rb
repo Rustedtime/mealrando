@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
   end
 
   def show
@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
   end
 
   def plan
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
     @errors = Array.new()
   end
 
@@ -70,7 +70,7 @@ class RecipesController < ApplicationController
       @recipes = randomRecipes
       @ingredients = ingredientList
     else
-      @recipes = Recipe.all
+      @recipes = current_user.recipes
       @errors = validation
       render :plan, status: :unprocessable_entity
     end
@@ -78,7 +78,7 @@ class RecipesController < ApplicationController
 
   private
     def recipe_params
-      params.require(:recipe).permit(:name, :ingredient)
+      params.require(:recipe).permit(:name, :ingredient, :user_id)
     end
 
     def randomize_params
